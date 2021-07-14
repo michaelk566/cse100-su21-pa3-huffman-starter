@@ -6,7 +6,7 @@
 - [Overview](#Overview)
 - [Academic Integrity and Honest Implementations](#Academic-Integrity-and-Honest-Implementations)
 - [Retrieving Starter Code](#Retrieving-Starter-Code)
-- [Naive ASCII Compression and Decompression](#Part-1-Naive-ASCII-Compression-and-Decompression)
+- [Naive ASCII Compression and Decompression](#Naive-ASCII-Compression-and-Decompression)
   - [1. Implement HCTree](#1-Implement-HCTree)
   - [2. Implement Compression](#2-Implement-Compression)
   - [3. Implement Uncompress](#3-Implement-Uncompress)
@@ -44,15 +44,12 @@ There are also two folders containing possible test files for you to test your c
 ### 1. Implement HCTree
 The HCTree implementations will help you create Huffman tree/code for the input files. For now, they will support encoding and decoding with ASCII '1's and '0's only.  
 
-There are suggested methods in the HCTree.hpp header file that you might find useful specifically for this part, but that you should NOT use for the final submission. 
-
 Implementation Checklist:
 
 * Implement the HCTree.hpp methods in a new file HCTree.cpp. You can modify both files in any way you want. 
 * The overloaded < operator was provided for you in HCNode.hpp, make sure you read it along with the HCNodePtrComp comparator in HCTree.hpp to understand how does a priority queue storing HCNode pointers determine their priority. (Since the overloaded < operator was defined for you in the starter code, you may just ignore the additional comp() method on the bottom of HCNode.hpp)
 * You may modify HCNode.hpp any way you want, but you must implement any additional methods that you added in a new file HCNode.cpp. 
 Note that all other relevant files that you created are required for the submission. Also, make sure your makefile can compile all the files you have. 
- 
 
 Implementation Notes:
 
@@ -84,7 +81,7 @@ Implement The Following Control Flow in compress.cpp :
 
 4. Open the output file for writing.
 
-5. Write enough information (a "file header") to the output file to enable the coding tree to be reconstructed when the file is read by your uncompress program. You should write the header as plain (ASCII) text. 
+5. Write enough information (a "file header") to the output file to enable the coding tree to be reconstructed when the file is read by your uncompress program. You should write the header as plain (ASCII) text. See "the file header demystified" and "designing your header" for more details.
 
 6. Open the input file for reading, again. If you instead keep the file open without ever closing it, you will need to clear the EOF flag using the clear() method.
 
@@ -99,9 +96,9 @@ __Note: Your Makefile must create the executables "compress" and "uncompress" wi
 #### The "file header" demystified
 Both the compress and uncompress programs need to construct the Huffman Tree before they can successfully encode and decode information, respectively. The compress program has access to the original file, so it can build the tree by first deciphering the symbol counts. However, the uncompress program only has access to the compressed input file and not the original file, so it has to use some other information to build the tree. The information needed for the uncompress program to build the Huffman tree is stored in the header of the compressed file. So the header information should be sufficient in reconstructing the tree. Note that the "file header" is not a .hpp file but rather the top portion of the compressed file. 
 
-Designing your header: A straightforward, non-optimized method that you __MUST USE__ for this assignment
+Designing your header: A straightforward, non-optimized method that you __MUST USE__ for the assignment.
 
-Probably the easiest way to do it is to save the frequency counts of the bytes in the original uncompressed file as a sequence of 256 integers at the beginning of the compressed file. For the first part of your PA you __MUST__ write this frequency-based header as 256 lines where each line contains a single int written as plain text.
+Probably the easiest way to do it is to save the frequency counts of the bytes in the original uncompressed file as a sequence of 256 integers at the beginning of the compressed file. For the PA you __MUST__ write this frequency-based header as 256 lines where each line contains a single int written as plain text.
 
 E.g.:
 > 0 <br>
@@ -138,14 +135,16 @@ Implement The Following Control Flow in uncompress.cpp :
 
 6. Test your solution. For more details, see the "Testing" section later in the PA
 
+__Submit early and often: When you have finished with the section, submit this section’s files to the PA3: Huffman Encoding - Naive submission on Gradescope.__
+
 Files to turn-in:  Makefile, compress.cpp, uncompress.cpp, HCNode.hpp, HCNode.cpp, HCTree.hpp, HCTree.cpp
 
 ## Testing Tips
 
 ### General Tips
-Because the code writes in plain text, you can actually check the codes produced for small files by hand!  Remember large programs are hard to debug. So test each function that you write before writing more code. We will only be doing "black box" testing of your program, so you will not receive partial credit for each function that you write. However, to get correct end-to-end behavior you must unit test your program extensively.
+Because the PA writes in plain text, you can actually check the codes produced for small files by hand!  Remember large programs are hard to debug. So test each function that you write before writing more code. We will only be doing "black box" testing of your program, so you will not receive partial credit for each function that you write. However, to get correct end-to-end behavior you must unit test your program extensively.
 
-For some useful testing tools, refer to this doc (especially cmp and diff -w).
+For some useful testing tools, refer to this doc (especially cmp and diff -w). Additionally, we have provided you with two reference executables: refcompress and refuncompress. You can find both these executables by going to the following directory in your ieng6 account: /home/linux/ieng6/cs100s121/public/pa3_refs.  
 
 Edge Cases Checklist: 
 
@@ -157,7 +156,7 @@ Don't try out your compressor on large files (say 10 MB or larger) until you hav
 
 ## Getting Help
 
-Tutors in the labs are there to help you debug. TA and Professor OH are dedicated to homework and/or PA conceptual questions, but they will not help with debugging (to ensure fairness and also so students have a clear space to ask conceptual questions). Questions about the intent of starter code can be posted on piazza. Please do not post your code to piazza either publicly or privately - debugging support comes from the tutors in the labs.
+Tutors in the labs are there to help you debug. TA and Professor OH are dedicated to homework and/or PA conceptual questions, but they will not help with debugging (to ensure fairness and also so students have a clear space to ask conceptual questions). Questions about the intent of starter code can be posted on edstem. Please do not post your code to edstem either publicly or privately - debugging support comes from the tutors in the labs.
 
 **_Format of your debugging help requests_**
 
@@ -169,7 +168,7 @@ Yes, 5 minutes. The job of tutors is to help you figure out the next step in the
 
 This means you should use your time with tutors effectively. Before asking for help, you will want to already have tried running your code in gdb (or valgrind, depending on the error). You should know roughly which line is causing the error and/or have a clear idea of the symptoms. When the tutor comes over, you should be able to say:
 
-**What you are trying to do.** For example, “I’m working on Part 1 and am trying to get the insert method in the BST to work correctly.”
+**What you are trying to do.** For example, “I’m working on the PA and am trying to get the insert method in the BST to work correctly.”
 
 **What’s the error.** For example, “the code compiles correctly, but when I insert a child in my right subtree, it seems to lose the child that was there before.”
 
@@ -185,7 +184,7 @@ Instructions to submit your code on GradeScope using git:
 
 2. Be sure to push the final version of your code to your private Github repository. That will be the code you will submit.
 
-3. Go to gradescope and find PA2 submission. You will be asked to authorize your github account. After authorizing your account, choose the repo you pushed your PA3 code to and the correct branch.
+3. Go to gradescope and find PA3 submission. You will be asked to authorize your github account. After authorizing your account, choose the repo you pushed your PA3 code to and the correct branch.
 
 4. You can submit as many times as you like before the deadline: only your last submission will be counted.
 
@@ -193,4 +192,4 @@ Instructions to submit your code on GradeScope using git:
 
 ### Grading
 
-Grading is holistic, and will be mostly black-box tested. This means that we mostly will not test your individual methods, but test your program as a whole. **It is very important that your output matches the output format mentioned in write up or any provided reference executables.**
+Grading is holistic, and will be mostly black-box tested. This means that we mostly will not test your individual methods, but test your program as a whole. **It is very important that your output matches the output format mentioned in write up or any provided reference executables (See General Tips Section).**
