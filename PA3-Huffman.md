@@ -1,6 +1,6 @@
 # PA3: Huffman Encoding
 
-## Due: by 11:59pm on Wednesday 7/21/2021
+## Due: by 11:59pm on Wednesday 8/25/2021
 
 ## Table of Contents
 - [Overview](#Overview)
