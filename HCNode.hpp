@@ -52,10 +52,5 @@ ostream& operator<<(ostream& stm, const HCNode& n) {
     return stm;
 }
 
-/**
- * Unused. < operator overloaded above.
- */
-bool comp(HCNode* one, HCNode* other);
-
 
 #endif // HCNODE_HPP
