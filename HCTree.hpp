@@ -49,8 +49,6 @@ public:
      *  the sequence of bits (as ASCII) coding the given symbol.
      *  PRECONDITION: build() has been called, to create the coding
      *  tree, and initialize root pointer and leaves vector.
-     *  THIS METHOD IS USEFUL FOR THE CHECKPOINT BUT SHOULD NOT
-     *  BE USED IN THE FINAL SUBMISSION.
      */
     void encode(byte symbol, ofstream& out) const;
 
@@ -59,8 +57,6 @@ public:
      *  ASCII text) from the ifstream.
      *  PRECONDITION: build() has been called, to create the coding
      *  tree, and initialize root pointer and leaves vector.
-     *  THIS METHOD IS USEFUL FOR THE CHECKPOINT BUT SHOULD NOT BE USED
-     *  IN THE FINAL SUBMISSION.
      */
     int decode(ifstream& in) const;
 
