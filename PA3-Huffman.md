@@ -142,7 +142,7 @@ Files to turn-in:  Makefile, compress.cpp, uncompress.cpp, HCNode.hpp, HCNode.cp
 ### General Tips
 Because the code writes in plain text, you can actually check the codes produced for small files by hand!  Remember large programs are hard to debug. So test each function that you write before writing more code. We will only be doing "black box" testing of your program, so you will not receive partial credit for each function that you write. However, to get correct end-to-end behavior you must unit test your program extensively.
 
-For some useful testing tools, refer to this doc (especially cmp and diff -w). Additionally, we have provided you with two reference executables: refcompress and refuncompress. You can find both these executables by going to the following directory in your ieng6 account: /home/linux/ieng6/cs100s121/public/pa3_refs.  
+For some useful testing tools, refer to this doc (especially cmp and diff -w). Additionally, we have provided you with two reference executables: refcompress and refuncompress. You can find both these executables by going to the following directory in your ieng6 account: /home/linux/ieng6/cs100s221/public/pa3_refs.  
 
 Edge Cases Checklist: 
 
